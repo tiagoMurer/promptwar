@@ -60,11 +60,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sourcecode/model/jogador/Jogador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="92" column="83" lean-forward="true" selection-start-line="92" selection-start-column="83" selection-end-line="92" selection-end-column="83" />
+            <state relative-caret-position="272">
+              <caret line="73" column="61" selection-start-line="73" selection-start-column="61" selection-end-line="73" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3876#3877#0" expanded="true" />
@@ -120,10 +120,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sourcecode/model/territorios/Pais.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="741">
-              <caret line="96" column="32" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
+            <state relative-caret-position="136">
+              <caret line="45" column="20" lean-forward="true" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2509#2510#0" expanded="true" />
                 <element signature="e#2542#2543#0" expanded="true" />
                 <element signature="e#2591#2592#0" expanded="true" />
                 <element signature="e#2635#2636#0" expanded="true" />
@@ -135,7 +136,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sourcecode/model/inputs_outputs/LeitorArquivoConf.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
+            <state relative-caret-position="924">
               <caret line="98" column="68" lean-forward="true" selection-start-line="98" selection-start-column="68" selection-end-line="98" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -184,11 +185,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sourcecode/model/inputs_outputs/Outputs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="18" column="132" lean-forward="true" selection-start-line="18" selection-start-column="132" selection-end-line="18" selection-end-column="132" />
+            <state relative-caret-position="391">
+              <caret line="31" column="73" selection-start-line="31" selection-start-column="73" selection-end-line="31" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -246,15 +247,15 @@
         <option value="$PROJECT_DIR$/src/sourcecode/model/Partida.java" />
         <option value="$PROJECT_DIR$/src/sourcecode/model/Rodada.java" />
         <option value="$PROJECT_DIR$/src/sourcecode/model/Jogador.java" />
-        <option value="$PROJECT_DIR$/src/sourcecode/model/inputs_outputs/Outputs.java" />
         <option value="$PROJECT_DIR$/src/sourcecode/model/territorios/Territorios.java" />
         <option value="$PROJECT_DIR$/src/sourcecode/model/dinamica/Partida.java" />
         <option value="$PROJECT_DIR$/src/sourcecode/model/jogador/Ataque.java" />
         <option value="$PROJECT_DIR$/src/sourcecode/Main.java" />
-        <option value="$PROJECT_DIR$/src/sourcecode/model/territorios/Pais.java" />
         <option value="$PROJECT_DIR$/src/sourcecode/model/territorios/Continente.java" />
         <option value="$PROJECT_DIR$/src/sourcecode/model/jogador/Deslocamento.java" />
+        <option value="$PROJECT_DIR$/src/sourcecode/model/territorios/Pais.java" />
         <option value="$PROJECT_DIR$/src/sourcecode/model/jogador/Jogador.java" />
+        <option value="$PROJECT_DIR$/src/sourcecode/model/inputs_outputs/Outputs.java" />
       </list>
     </option>
   </component>
@@ -477,15 +478,16 @@
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1561252767601" duration="12512000" />
       <workItem from="1561291974236" duration="29590000" />
-      <workItem from="1561322175463" duration="3588000" />
+      <workItem from="1561322175463" duration="4368000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46992000" />
+    <option name="totallyTimeSpent" value="47772000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.1581876" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -615,16 +617,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sourcecode/model/jogador/Ataque.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1179">
-          <caret line="94" column="98" lean-forward="true" selection-start-line="94" selection-start-column="98" selection-end-line="94" selection-end-column="98" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sourcecode/model/territorios/Continente.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -635,43 +627,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sourcecode/model/territorios/Pais.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="96" column="32" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2542#2543#0" expanded="true" />
-            <element signature="e#2591#2592#0" expanded="true" />
-            <element signature="e#2635#2636#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sourcecode/model/territorios/Territorios.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="41" column="31" lean-forward="true" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sourcecode/model/inputs_outputs/LeitorArquivoConf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="98" column="68" lean-forward="true" selection-start-line="98" selection-start-column="68" selection-end-line="98" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sourcecode/model/inputs_outputs/Outputs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="132" lean-forward="true" selection-start-line="18" selection-start-column="132" selection-end-line="18" selection-end-column="132" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -689,10 +648,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sourcecode/model/territorios/Pais.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="45" column="20" lean-forward="true" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2509#2510#0" expanded="true" />
+            <element signature="e#2542#2543#0" expanded="true" />
+            <element signature="e#2591#2592#0" expanded="true" />
+            <element signature="e#2635#2636#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sourcecode/model/jogador/Ataque.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1179">
+          <caret line="94" column="98" lean-forward="true" selection-start-line="94" selection-start-column="98" selection-end-line="94" selection-end-column="98" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sourcecode/model/jogador/Jogador.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="92" column="83" lean-forward="true" selection-start-line="92" selection-start-column="83" selection-end-line="92" selection-end-column="83" />
+        <state relative-caret-position="272">
+          <caret line="73" column="61" selection-start-line="73" selection-start-column="61" selection-end-line="73" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3876#3877#0" expanded="true" />
@@ -715,6 +698,26 @@
             <element signature="e#4545#4546#0" expanded="true" />
             <element signature="e#4592#4593#0" expanded="true" />
             <element signature="e#4634#4635#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sourcecode/model/inputs_outputs/LeitorArquivoConf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="924">
+          <caret line="98" column="68" lean-forward="true" selection-start-line="98" selection-start-column="68" selection-end-line="98" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sourcecode/model/inputs_outputs/Outputs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="31" column="73" selection-start-line="31" selection-start-column="73" selection-end-line="31" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

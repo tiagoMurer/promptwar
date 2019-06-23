@@ -36,7 +36,7 @@ public class Pais {
         this.id = id;
     }
 
-    public Pais getPaisById(int x) throws IOException {
+    public static Pais getPaisById(int x) throws IOException {
         Pais pais = null;
         for(Pais p: new LeitorArquivoConf().readPaises()){
             if(p.getId() == x){
@@ -54,7 +54,6 @@ public class Pais {
     public ArrayList<Integer> getFronteiras() {
         return fronteiras;
     }
-
 
     public int getExercitos() {
         return exercitos;

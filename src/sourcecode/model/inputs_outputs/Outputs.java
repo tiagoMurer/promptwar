@@ -3,6 +3,7 @@ package sourcecode.model.inputs_outputs;
 import sourcecode.model.jogador.Jogador;
 import sourcecode.model.territorios.Pais;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Outputs {
@@ -21,6 +22,15 @@ public class Outputs {
                 System.out.println("\n");
             }
         }
+    }
+
+    public void listarIdPaises(ArrayList<Integer> ids) throws IOException {
+        for(int i = 0; i < ids.size(); i++){
+            Pais p = Pais.getPaisById(ids.get(i));
+            System.out.println("[" + (i+1) + "] "+ p.getNome());
+
+        }
+
     }
 
     public void perguntarSimNao(String pergunta){

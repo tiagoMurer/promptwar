@@ -71,7 +71,7 @@ public class Jogador {
                     System.out.println("Você precisa manter um exército de ocupação");
                 }else{
                     System.out.println("Escolha um pais defensor:");
-                    //op.listarPaises(atacante.getFronteirasInimigas());
+                    op.listarIdPaises(atacante.getFronteiras());
                     i = scanner.nextInt();
                     Pais defensor = atacante.getPaisById(i);
                     System.out.println("Determine um número de atacantes ( 1  a "+ (atacante.getExercitos() - 1) +")");
@@ -97,7 +97,7 @@ public class Jogador {
             Pais pais = dominio.get(i);
             if(pais.getFronteirasNaoInimigas().size() > 0) {
                 System.out.println("Escolha um pais para ter suas tropas deslocadas:");
-                //op.listarPaises(t.intsToPaises(pais.getFronteiras()));
+                op.listarIdPaises(pais.getFronteiras());
                 scanner.nextInt();
             }else{
                 System.out.println("Não há para onde mover exércitos deste país:");
