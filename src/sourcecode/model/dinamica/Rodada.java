@@ -1,4 +1,6 @@
-package sourcecode.model;
+package sourcecode.model.dinamica;
+
+import sourcecode.model.jogador.Jogador;
 
 import java.io.IOException;
 import java.util.ArrayList;

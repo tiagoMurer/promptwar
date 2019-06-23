@@ -1,4 +1,4 @@
-package sourcecode.model;
+package sourcecode.model.jogador;
 
 import sourcecode.model.inputs_outputs.Outputs;
 import sourcecode.model.territorios.Pais;
@@ -36,6 +36,7 @@ public class Jogador {
         System.out.println("Escolha a alocação de seus novos exércitos nos países que você possui:");
         op.listarPaises(dominio);
         for(int i = 0; i < exercitosLivres; i++){
+            System.out.println((i+1) + " de " + exercitosLivres);
             int num = scanner.nextInt();
             Pais pais = dominio.get(i);
             pais.setExercitos(pais.getExercitos()+1);
@@ -46,12 +47,12 @@ public class Jogador {
         boolean x = true;
         while(x){
             System.out.println("Gostaria de iniciar um ataque?");
-            System.out.println("[0] S");
-            System.out.println("[1] N");
+            System.out.println("[0] Sim");
+            System.out.println("[1] Não");
             int num = 2;
             while(num != 0 && num != 1){
                 System.out.println("Insira sim(0) ou nao(1)");
-                scanner.nextInt();
+                num = scanner.nextInt();
             }
             if(num == 1){
                 x = false;
@@ -61,16 +62,47 @@ public class Jogador {
                 op.listarPaises(dominio);
                 int i = scanner.nextInt();
                 Pais atacante = dominio.get(i);
-                System.out.println("Escolha um pais defensor:");
-                op.listarPaises(atacante.getFronteirasInimigas());
-                i = scanner.nextInt();
-                Pais defensor = atacante.getPaisById(i);
+                if(atacante.getExercitos() < 2){
+                    System.out.println("Você precisa manter um exército de ocupação");
+                }else{
+                    System.out.println("Escolha um pais defensor:");
+                    op.listarPaises(atacante.getFronteirasInimigas());
+                    i = scanner.nextInt();
+                    Pais defensor = atacante.getPaisById(i);
+                    System.out.println("Determine um número de atacantes ( 1  a "+ (atacante.getExercitos() - 1) +")");
+                    i = scanner.nextInt();
+                }
             }
 
         }
     }
 
-    public void deslocar(){
+    public void deslocar() throws IOException {
+
+        System.out.println("Gostaria de deslocar suas tropas?");
+        System.out.println("[1] Sim");
+        System.out.println("[2] Não");
+        int opcao = scanner.nextInt();
+
+        while(opcao == 1) {
+            System.out.println("Escolha um pais para ter suas tropas deslocadas:");
+            op.listarPaises(dominio);
+            int i = scanner.nextInt();
+
+            Pais pais = dominio.get(i);
+            if(pais.getFronteirasNaoInimigas().size() > 0) {
+                System.out.println("Escolha um pais para ter suas tropas deslocadas:");
+                op.listarPaises(pais.getFronteirasNaoInimigas());
+            }else{
+                System.out.println("Não há para onde mover exércitos deste país:");
+            }
+
+            System.out.println("Gostaria de deslocar mais tropas?");
+            System.out.println("[1] Sim");
+            System.out.println("[2] Não");
+            opcao = scanner.nextInt();
+        }
+
 
     }
 

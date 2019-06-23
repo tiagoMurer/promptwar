@@ -1,6 +1,6 @@
 package sourcecode.model.inputs_outputs;
 
-import sourcecode.model.Jogador;
+import sourcecode.model.jogador.Jogador;
 import sourcecode.model.territorios.Pais;
 
 import java.util.ArrayList;

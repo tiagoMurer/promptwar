@@ -1,6 +1,6 @@
 package sourcecode;
 
-import sourcecode.model.Partida;
+import sourcecode.model.dinamica.Partida;
 
 import java.io.IOException;
 import java.util.Scanner;

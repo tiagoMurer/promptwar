@@ -1,5 +1,6 @@
-package sourcecode.model;
+package sourcecode.model.dinamica;
 
+import sourcecode.model.jogador.Jogador;
 import sourcecode.model.inputs_outputs.LeitorArquivoConf;
 import sourcecode.model.territorios.Pais;
 import sourcecode.model.territorios.Territorios;

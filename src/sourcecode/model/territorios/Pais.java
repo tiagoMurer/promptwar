@@ -1,6 +1,6 @@
 package sourcecode.model.territorios;
 
-import sourcecode.model.Jogador;
+import sourcecode.model.jogador.Jogador;
 import sourcecode.model.inputs_outputs.LeitorArquivoConf;
 
 import java.io.IOException;
@@ -88,10 +88,21 @@ public class Pais {
     public ArrayList<Pais> getFronteirasInimigas() throws IOException {
         ArrayList<Pais> fronteirasInimigas = new LeitorArquivoConf().readPaises();
         for(Pais i: new LeitorArquivoConf().readPaises()){
-            if(fronteiras.contains(i.getId()) || i.getOcupante() == null || i.getOcupante().getCor() == ocupante.getCor()){
+            if(fronteiras.contains(i.getId()) == false || i.getOcupante() == null || i.getOcupante().getCor() == ocupante.getCor()){
                 fronteirasInimigas.remove(i);
             }
         }
         return fronteirasInimigas;
     }
+
+    public ArrayList<Pais> getFronteirasNaoInimigas() throws IOException {
+        ArrayList<Pais> fronteirasNaoInimigas = new LeitorArquivoConf().readPaises();
+        for(Pais i: new LeitorArquivoConf().readPaises()){
+            if(fronteiras.contains(i.getId()) == false || (i.getOcupante() != null && i.getOcupante() != ocupante)){
+                fronteirasNaoInimigas.remove(i);
+            }
+        }
+        return fronteirasNaoInimigas;
+    }
+
 }
