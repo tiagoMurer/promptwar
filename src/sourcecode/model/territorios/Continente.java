@@ -1,6 +1,8 @@
 package sourcecode.model.territorios;
 
 
+import sourcecode.model.jogador.Jogador;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -8,8 +10,7 @@ public class Continente {
     private int id;
     private String nome;
     private int pontosDominacao;
-
-    private static ArrayList<Continente> continentes;
+    private Jogador dominante;
 
     public Continente(int id, String nome, int pontosDominacao) throws IOException {
         this.nome = nome;

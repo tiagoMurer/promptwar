@@ -13,5 +13,6 @@ public class Main{
         int i = sc.nextInt();
         Partida partida = new Partida(i);
         partida.novaPartida();
+
     }
 }

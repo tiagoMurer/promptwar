@@ -94,4 +94,11 @@ public class Pais {
         return fronteirasNaoInimigas;
     }
 
+    public int getContinente() {
+        return continente;
+    }
+
+    public void setContinente(int continente) {
+        this.continente = continente;
+    }
 }

@@ -1,6 +1,7 @@
 package sourcecode.model.jogador;
 
 import sourcecode.model.inputs_outputs.Outputs;
+import sourcecode.model.territorios.Continente;
 import sourcecode.model.territorios.Pais;
 import sourcecode.model.territorios.Territorios;
 
@@ -14,6 +15,7 @@ public class Jogador {
     private int exercitos;
     private int exercitosLivres;
     private ArrayList<Pais> dominio;
+    private ArrayList<Continente> continentesDominados;
     private int numpaises;
     private Outputs op;
     private Scanner scanner;
@@ -44,6 +46,7 @@ public class Jogador {
             Pais pais = dominio.get(num-1);
             pais.setExercitos(pais.getExercitos()+1);
             System.out.println(pais.getNome() + " recebeu 1 exército");
+            setExercitosLivres(getExercitosLivres() - 1);
         }
     }
 
