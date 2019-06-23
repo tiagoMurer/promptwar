@@ -14,6 +14,7 @@ public class Pais {
     private int exercitos;
     private Jogador ocupante;
 
+
     public Pais(int id, String nome, int continente, ArrayList<Integer> fronteiras) throws IOException {
         this.id = id;
         this.nome = nome;
@@ -49,25 +50,11 @@ public class Pais {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public int getContinente() {
-        return continente;
-    }
-
-    public void setContinente(int continente) {
-        this.continente = continente;
-    }
 
     public ArrayList<Integer> getFronteiras() {
         return fronteiras;
     }
 
-    public void setFronteiras(ArrayList<Integer> fronteiras) {
-        this.fronteiras = fronteiras;
-    }
 
     public int getExercitos() {
         return exercitos;
@@ -86,20 +73,22 @@ public class Pais {
     }
 
     public ArrayList<Pais> getFronteirasInimigas() throws IOException {
-        ArrayList<Pais> fronteirasInimigas = new LeitorArquivoConf().readPaises();
-        for(Pais i: new LeitorArquivoConf().readPaises()){
-            if(fronteiras.contains(i.getId()) == false || i.getOcupante() == null || i.getOcupante().getCor() == ocupante.getCor()){
-                fronteirasInimigas.remove(i);
+        ArrayList<Pais> paises = new LeitorArquivoConf().readPaises();
+        ArrayList<Pais> fronteirasInimigas = new ArrayList<>();
+        for(Pais i: paises){
+            if(this.fronteiras.contains(i.getId()) && i.getOcupante() != null && i.getOcupante().getCor() != ocupante.getCor()){
+                fronteirasInimigas.add(i);
             }
         }
         return fronteirasInimigas;
     }
 
     public ArrayList<Pais> getFronteirasNaoInimigas() throws IOException {
-        ArrayList<Pais> fronteirasNaoInimigas = new LeitorArquivoConf().readPaises();
-        for(Pais i: new LeitorArquivoConf().readPaises()){
-            if(fronteiras.contains(i.getId()) == false || (i.getOcupante() != null && i.getOcupante() != ocupante)){
-                fronteirasNaoInimigas.remove(i);
+        ArrayList<Pais> paises = new LeitorArquivoConf().readPaises();
+        ArrayList<Pais> fronteirasNaoInimigas = new ArrayList<>();
+        for(Pais i: paises){
+            if(this.fronteiras.contains(i.getId()) && (i.getOcupante() == null || i.getOcupante() == ocupante)){
+                fronteirasNaoInimigas.add(i);
             }
         }
         return fronteirasNaoInimigas;

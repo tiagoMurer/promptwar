@@ -4,8 +4,6 @@ import sourcecode.model.jogador.Jogador;
 import sourcecode.model.territorios.Pais;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 
 public class Outputs {
 
@@ -14,32 +12,22 @@ public class Outputs {
     }
 
     public void listarPaises(ArrayList<Pais> paises){
-        int i = 1;
-        for(Pais pais: paises){
-            System.out.print("[" + i + "] "+ pais.getNome());
-            if(pais.getOcupante().getCor() != null){
-                System.out.print(" ("+ pais.getOcupante().getCor() + ", "+ pais.getExercitos() + " exércitos)\n");
+
+        for(int i = 0; i <  paises.size(); i++){
+            System.out.print("[" + (i+1) + "] "+ paises.get(i).getNome());
+            if(paises.get(i).getOcupante().getCor() != null){
+                System.out.print(" ("+ paises.get(i).getOcupante().getCor() + ", "+ paises.get(i).getExercitos() + " exércitos)\n");
             }else{
                 System.out.println("\n");
             }
-            i++;
         }
     }
 
-    public void listarPaisesSet(HashSet<Pais> paises) {
-        Iterator<Pais> itr = paises.iterator();
-        int i = 0;
-        while (itr.hasNext()) {
-            System.out.println("[" + i + "] " + itr.next().getNome());
-            i++;
-        }
+    public void perguntarSimNao(String pergunta){
+        System.out.println(pergunta);
+        System.out.println("[1] Sim");
+        System.out.println("[2] Nao");
     }
 
-    public void listarJogadores(ArrayList<Jogador> jogadores){
-        int i = 1;
-        for(Jogador jogador: jogadores){
-            System.out.println("["+ i +"] " + jogador.getCor());
 
-        }
-    }
 }

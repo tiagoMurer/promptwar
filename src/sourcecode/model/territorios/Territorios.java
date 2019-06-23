@@ -41,10 +41,20 @@ public class Territorios {
         for(Pais p: paises){
             if(p.getId() == x){
                 pais = p;
+                break;
             }
         }
         return pais;
     }
+
+    public ArrayList<Pais> intsToPaises(ArrayList<Integer> ints){
+        ArrayList<Pais> paises = new ArrayList();
+        for(Integer i: ints){
+            paises.add(getPaisById(i));
+        }
+        return paises;
+    }
+
 
     public Continente getContinenteById(int x){
         Continente continente = null;

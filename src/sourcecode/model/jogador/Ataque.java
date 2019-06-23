@@ -1,6 +1,7 @@
 package sourcecode.model.jogador;
 
 import sourcecode.model.Dado;
+import sourcecode.model.inputs_outputs.Outputs;
 import sourcecode.model.territorios.Pais;
 
 import java.util.ArrayList;
@@ -18,10 +19,13 @@ public class Ataque {
     private Dado dado;
 
     private Scanner sc;
+    private Outputs op;
 
     // construtor
     public Ataque(Pais atacante, Pais defensor, int numexercitos) {
         this.sc = new Scanner(System.in);
+        this.op = new Outputs();
+
         this.dado = new Dado(1, 6);
         this.atacante = atacante;
         this.defensor = defensor;
@@ -41,9 +45,7 @@ public class Ataque {
             ArrayList<Integer> def = rolarDef();
             comparar(atk, def);
 
-            System.out.println("Iniciar nova batalha?");
-            System.out.println("[1] Sim");
-            System.out.println("[2] Não");
+            op.perguntarSimNao("Gostaria de iniciar mais uma batalha?");
             novabatalha = sc.nextInt();
         }
 
@@ -99,6 +101,8 @@ public class Ataque {
                 numexercitos -= 1;
             }
         }
+
+        atacante.setExercitos(atacante.getExercitos() + numexercitos);
     }
 
 }

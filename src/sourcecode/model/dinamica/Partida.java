@@ -34,11 +34,12 @@ public class Partida {
     public void novaPartida() throws IOException {
         while (winCondition == false) {
             rodada.novaRodada(vez);
+            checkWin();
 
         }
     }
 
-    public void inscreverJogadores(int numJogadores) {
+    public void inscreverJogadores(int numJogadores) throws IOException{
         String[] cores = {"Azul", "Vermelho", "Amarelo", "Rosa", "Branco", "Preto"};
         for(int i = 0; i < numJogadores; i++){
             Jogador jogador = new Jogador(cores[i], i + 1);
@@ -72,6 +73,17 @@ public class Partida {
             System.out.println("\n");
             jogador.setNumpaises(ppj);	//seta numero de paises dos jogadores
         }
+    }
+
+    public boolean checkWin(){
+        Jogador jogador = territorio.getPaises().get(0).getOcupante();
+        for(Pais pais: territorio.getPaises()){
+            if(pais.getOcupante().getCor() != jogador.getCor()){
+                return false;
+            }
+        }
+        winCondition = true;
+        return true;
     }
 
 

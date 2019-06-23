@@ -1,6 +1,5 @@
 package sourcecode.model.territorios;
 
-import sourcecode.model.inputs_outputs.LeitorArquivoConf;
 
 import java.io.IOException;
 import java.util.ArrayList;
