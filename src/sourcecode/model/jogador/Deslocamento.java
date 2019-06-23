@@ -21,6 +21,6 @@ public class Deslocamento {
     }
 
     public void checarDominio(){
-        destino.getContinente()
+        destino.getContinente();
     }
 }

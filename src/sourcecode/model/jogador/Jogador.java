@@ -46,8 +46,8 @@ public class Jogador {
             Pais pais = dominio.get(num-1);
             pais.setExercitos(pais.getExercitos()+1);
             System.out.println(pais.getNome() + " recebeu 1 exército");
-            setExercitosLivres(getExercitosLivres() - 1);
         }
+        setExercitosLivres(0);
     }
 
     public void atacar() throws IOException {
