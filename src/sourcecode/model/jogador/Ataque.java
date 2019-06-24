@@ -19,12 +19,10 @@ public class Ataque {
     private Dado dado;
 
     private Scanner sc;
-    private Outputs op;
 
     // construtor
     public Ataque(Pais atacante, Pais defensor, int numexercitos) {
         this.sc = new Scanner(System.in);
-        this.op = new Outputs();
 
         this.dado = new Dado(1, 6);
         this.atacante = atacante;
@@ -39,13 +37,24 @@ public class Ataque {
         System.out.println("[1] Sim");
         System.out.println("[2] Não");
         int novabatalha = sc.nextInt();
+        if(defensor.getExercitos() == 0 || defensor.getOcupante().getCor() == atacante.getOcupante().getCor()){
+            System.out.println("Você só pode atacar um país inimigo");
+        }
         while(novabatalha == 1 && defensor.getExercitos() > 0 && numexercitos > 0){
             System.out.println("Uma batalha será iniciada");
             ArrayList<Integer> atk = rolarAtk();
+            System.out.print("O ataque rolou: ");
+            for(Integer i: atk){
+                System.out.print(i);
+            }
             ArrayList<Integer> def = rolarDef();
+            System.out.print("A defesa rolou: ");
+            for(Integer i: def){
+                System.out.print(i);
+            }
             comparar(atk, def);
 
-            op.perguntarSimNao("Gostaria de iniciar mais uma batalha?");
+            Outputs.perguntarSimNao("Gostaria de iniciar mais uma batalha?");
             novabatalha = sc.nextInt();
         }
 

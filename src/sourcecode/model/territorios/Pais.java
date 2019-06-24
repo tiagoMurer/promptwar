@@ -71,8 +71,8 @@ public class Pais {
         this.ocupante = ocupante;
     }
 
-    public ArrayList<Pais> getFronteirasInimigas() throws IOException {
-        ArrayList<Pais> paises = new LeitorArquivoConf().readPaises();
+    public ArrayList<Pais> getFronteirasInimigas(){
+        ArrayList<Pais> paises = Territorios.getpaises();
         ArrayList<Pais> fronteirasInimigas = new ArrayList<>();
         for(Pais i: paises){
             if(this.fronteiras.contains(i.getId()) && i.getOcupante() != null && i.getOcupante().getCor() != ocupante.getCor()){
@@ -82,8 +82,8 @@ public class Pais {
         return fronteirasInimigas;
     }
 
-    public ArrayList<Pais> getFronteirasNaoInimigas() throws IOException {
-        ArrayList<Pais> paises = new LeitorArquivoConf().readPaises();
+    public ArrayList<Pais> getFronteirasNaoInimigas(){
+        ArrayList<Pais> paises = Territorios.getpaises();
         ArrayList<Pais> fronteirasNaoInimigas = new ArrayList<>();
         for(Pais i: paises){
             if(this.fronteiras.contains(i.getId()) && (i.getOcupante() == null || i.getOcupante() == ocupante)){

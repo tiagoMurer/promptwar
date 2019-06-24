@@ -12,7 +12,7 @@ public class Outputs {
         System.out.println("#####"+x+"#####");
     }
 
-    public void listarPaises(ArrayList<Pais> paises){
+    public static void listarPaises(ArrayList<Pais> paises){
 
         for(int i = 0; i <  paises.size(); i++){
             System.out.print("[" + (i+1) + "] "+ paises.get(i).getNome());
@@ -24,16 +24,22 @@ public class Outputs {
         }
     }
 
-    public void listarIdPaises(ArrayList<Integer> ids) throws IOException {
+    public static void listarIdPaises(ArrayList<Integer> ids) throws IOException {
         for(int i = 0; i < ids.size(); i++){
             Pais p = Pais.getPaisById(ids.get(i));
-            System.out.println("[" + (i+1) + "] "+ p.getNome());
+            String cor = "vazio";
+            if(p.getOcupante() != null){
+                cor = p.getOcupante().getCor();
+            }
+            int nex = p.getExercitos();
+            System.out.print("[" + (i+1) + "] "+ p.getNome());
+            System.out.println(" (" + cor + ", " + nex + " exércitos)");
 
         }
 
     }
 
-    public void perguntarSimNao(String pergunta){
+    public static void perguntarSimNao(String pergunta){
         System.out.println(pergunta);
         System.out.println("[1] Sim");
         System.out.println("[2] Nao");

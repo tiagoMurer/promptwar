@@ -7,9 +7,9 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class LeitorArquivoConf {
-    private String paisesPath = "src/resources/paises";
-    private String contPath = "src/resources/continentes";
-    private BufferedReader buf;
+    private static String paisesPath = "src/resources/paises";
+    private static String contPath = "src/resources/continentes";
+    private static BufferedReader buf;
 
     //gets e sets
     public String getPaisesPath() {
@@ -29,7 +29,7 @@ public class LeitorArquivoConf {
     }
 
     //outros métodos
-    public String fileToString(String caminhoArquivo) throws IOException {
+    public static String fileToString(String caminhoArquivo) throws IOException {
         InputStream is = new FileInputStream(caminhoArquivo);
         buf = new BufferedReader(new InputStreamReader(is));
         String line = buf.readLine();
@@ -44,14 +44,14 @@ public class LeitorArquivoConf {
         return fileAsString;
     }
 
-    public ArrayList<Continente> readContinentes() throws IOException { //recebe path e retorna arraylist de continentes de um arquivo
+    public static ArrayList<Continente> readContinentes() throws IOException { //recebe path e retorna arraylist de continentes de um arquivo
         //collection
         ArrayList<Continente> continentes = new ArrayList();
 
         int id;
         String name;
         int pontos;
-        String file = fileToString(this.contPath);
+        String file = fileToString(contPath);
 
         //classes
         Continente continente;
@@ -69,7 +69,7 @@ public class LeitorArquivoConf {
     }
 
 
-    public ArrayList<Pais> readPaises() throws IOException { //recebe path e retorna hashset de paises de um arquivo
+    public static ArrayList<Pais> readPaises() throws IOException { //recebe path e retorna hashset de paises de um arquivo
         //collection
         ArrayList<Pais> paises = new ArrayList();
         ArrayList<Integer> fronteiras;
@@ -79,7 +79,7 @@ public class LeitorArquivoConf {
         int continente;
 
         //strings
-        String file = fileToString(this.paisesPath);
+        String file = fileToString(paisesPath);
         String[] j;
         String name;
         String[] fr;

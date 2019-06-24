@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Territorios {
-    private ArrayList<Pais> paises;
-    private ArrayList<Continente> continentes;
+    private static ArrayList<Pais> paises;
+    private static ArrayList<Continente> continentes;
 
 
     public Territorios() throws IOException {
@@ -20,7 +20,7 @@ public class Territorios {
 
     //-----------------------getters+setters
 
-    public ArrayList<Pais> getPaises() {
+    public static ArrayList<Pais> getPaises() {
         return paises;
     }
 
@@ -36,7 +36,7 @@ public class Territorios {
         this.continentes = continentes;
     }
 
-    public Pais getPaisById(int x){
+    public static Pais getPaisById(int x){
         Pais pais = null;
         for(Pais p: paises){
             if(p.getId() == x){
@@ -45,6 +45,10 @@ public class Territorios {
             }
         }
         return pais;
+    }
+
+    public static ArrayList<Pais> getpaises(){
+        return paises;
     }
 
     public ArrayList<Pais> intsToPaises(ArrayList<Integer> ints){

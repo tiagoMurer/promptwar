@@ -49,7 +49,7 @@ public class Partida {
     }
 
     private void distribuirPaises(){
-        double x = territorio.getPaises().size()/jogadores.size();
+        double x = Territorios.getPaises().size()/jogadores.size();
         int ppj = (int) Math.floor(x); 		//ppj = paises por jogadores
 
         ArrayList<Integer> nums = new ArrayList();
