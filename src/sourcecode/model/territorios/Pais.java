@@ -36,9 +36,9 @@ public class Pais {
         this.id = id;
     }
 
-    public static Pais getPaisById(int x) throws IOException {
+    public static Pais getPaisById(int x){
         Pais pais = null;
-        for(Pais p: new LeitorArquivoConf().readPaises()){
+        for(Pais p: Territorios.getPaises()){
             if(p.getId() == x){
                 pais = p;
             }
@@ -72,11 +72,12 @@ public class Pais {
     }
 
     public ArrayList<Pais> getFronteirasInimigas(){
-        ArrayList<Pais> paises = Territorios.getpaises();
-        ArrayList<Pais> fronteirasInimigas = new ArrayList<>();
-        for(Pais i: paises){
-            if(this.fronteiras.contains(i.getId()) && i.getOcupante() != null && i.getOcupante().getCor() != ocupante.getCor()){
-                fronteirasInimigas.add(i);
+        ArrayList<Integer> fr = this.fronteiras;
+        ArrayList<Pais> fronteirasInimigas = new ArrayList();
+        for(Integer i: fr){
+            Pais pais = getPaisById(i);
+            if(pais.getOcupante() != null && pais.getOcupante().getCor() != ocupante.getCor()){
+                fronteirasInimigas.add(pais);
             }
         }
         return fronteirasInimigas;
@@ -86,7 +87,7 @@ public class Pais {
         ArrayList<Pais> paises = Territorios.getpaises();
         ArrayList<Pais> fronteirasNaoInimigas = new ArrayList<>();
         for(Pais i: paises){
-            if(this.fronteiras.contains(i.getId()) && (i.getOcupante() == null || i.getOcupante() == ocupante)){
+            if(fronteiras.contains(i.getId()) && (i.getOcupante() == null || i.getOcupante() == ocupante)){
                 fronteirasNaoInimigas.add(i);
             }
         }

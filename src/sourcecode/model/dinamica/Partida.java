@@ -62,7 +62,7 @@ public class Partida {
         for(Jogador jogador:jogadores){
             System.out.println("O jogador " + jogador.getCor() + " recebeu:");
             for(int i = 0; i < ppj; i++){
-                Pais pais = territorio.getPaisById(nums.get(p));
+                Pais pais = Territorios.getPaisById(nums.get(p));
                 System.out.print(pais.getNome()+ "("+pais.getId()+")   ");
                 pais.setOcupante(jogador);
                 jogador.getDominio().add(pais);
@@ -76,8 +76,8 @@ public class Partida {
     }
 
     public boolean checkWin(){
-        Jogador jogador = territorio.getPaises().get(0).getOcupante();
-        for(Pais pais: territorio.getPaises()){
+        Jogador jogador = Territorios.getPaises().get(0).getOcupante();
+        for(Pais pais: Territorios.getPaises()){
             if(pais.getOcupante().getCor() != jogador.getCor()){
                 return false;
             }

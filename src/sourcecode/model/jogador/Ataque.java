@@ -28,7 +28,7 @@ public class Ataque {
         this.atacante = atacante;
         this.defensor = defensor;
         this.numexercitos = numexercitos;
-        atacante.setExercitos(atacante.getExercitos() - numexercitos);
+        this.atacante.setExercitos(atacante.getExercitos() - numexercitos);
     }
 
 
@@ -38,22 +38,22 @@ public class Ataque {
         System.out.println("[2] Não");
         int novabatalha = sc.nextInt();
         if(defensor.getExercitos() == 0 || defensor.getOcupante().getCor() == atacante.getOcupante().getCor()){
-            System.out.println("Você só pode atacar um país inimigo");
+            novabatalha = 2;
         }
         while(novabatalha == 1 && defensor.getExercitos() > 0 && numexercitos > 0){
             System.out.println("Uma batalha será iniciada");
             ArrayList<Integer> atk = rolarAtk();
             System.out.print("O ataque rolou: ");
             for(Integer i: atk){
-                System.out.print(i);
+                System.out.print(i.intValue() + "   ");
             }
             ArrayList<Integer> def = rolarDef();
-            System.out.print("A defesa rolou: ");
+            System.out.print("\nA defesa rolou: ");
             for(Integer i: def){
-                System.out.print(i);
+                System.out.println(i.intValue() +"   ");
             }
             comparar(atk, def);
-
+            this.atacante.setExercitos(this.atacante.getExercitos() + numexercitos);
             Outputs.perguntarSimNao("Gostaria de iniciar mais uma batalha?");
             novabatalha = sc.nextInt();
         }
@@ -65,7 +65,6 @@ public class Ataque {
 
         for (int i = 0; i < n; i++) {
             int v = dado.rolarDado();
-            System.out.println("O jogador " + pais.getOcupante().getCor() + " rolou um " + v);
             rolagens.add(dado.rolarDado());
         }
         Collections.sort(rolagens);
@@ -110,8 +109,6 @@ public class Ataque {
                 numexercitos -= 1;
             }
         }
-
-        atacante.setExercitos(atacante.getExercitos() + numexercitos);
     }
 
 }

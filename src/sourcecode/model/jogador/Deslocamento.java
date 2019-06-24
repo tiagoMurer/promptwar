@@ -16,8 +16,15 @@ public class Deslocamento {
     }
 
     public void deslocar(){
-        origem.setExercitos(origem.getExercitos() - exercitos);
-        destino.setExercitos(origem.getExercitos() + exercitos);
+        if(origem.getExercitos() < 2){
+            System.out.println("Você precisa ter um exército de ocupação");
+        }
+        if(destino.getOcupante().getCor() != origem.getOcupante().getCor() && destino.getOcupante() != null){
+            System.out.println("Você não pode deslocar exércitos para um território inimigo");
+        }else{
+            origem.setExercitos(origem.getExercitos() - exercitos);
+            destino.setExercitos(origem.getExercitos() + exercitos);
+        }
     }
 
     public void checarDominio(){

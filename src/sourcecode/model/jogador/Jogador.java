@@ -7,6 +7,7 @@ import sourcecode.model.territorios.Territorios;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Jogador {
@@ -70,14 +71,18 @@ public class Jogador {
                 if(atacante.getExercitos() < 2){
                     System.out.println("Você precisa manter um exército de ocupação");
                 }else{
-                    System.out.println("Escolha um pais defensor:");
-                    op.listarIdPaises(atacante.getFronteiras());
+                    System.out.println("Escolha um pais na fronteira do país atacante:");
+                    op.listarPaises(atacante.getFronteirasInimigas());
                     i = scanner.nextInt();
                     Pais defensor = atacante.getPaisById(i);
-                    System.out.println("Determine um número de atacantes ( 1  a "+ (atacante.getExercitos() - 1) +")");
-                    i = scanner.nextInt();
-                    Ataque ataque = new Ataque(atacante, defensor, i);
-                    ataque.batalha();
+                    if(defensor.equals(atacante) || defensor.getExercitos() == 0){
+                        System.out.println("Você só pode atacar países inimigos");
+                    }else {
+                        System.out.println("Determine um número de atacantes ( 1  a " + (atacante.getExercitos() - 1) + ")");
+                        i = scanner.nextInt();
+                        Ataque ataque = new Ataque(atacante, defensor, i);
+                        ataque.batalha();
+                    }
                 }
             }
 
@@ -152,5 +157,26 @@ public class Jogador {
 
     public void setNumpaises(int numpaises) {
         this.numpaises = numpaises;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Jogador jogador = (Jogador) o;
+        return exercitos == jogador.exercitos &&
+                exercitosLivres == jogador.exercitosLivres &&
+                numpaises == jogador.numpaises &&
+                Objects.equals(cor, jogador.cor) &&
+                Objects.equals(t, jogador.t) &&
+                Objects.equals(dominio, jogador.dominio) &&
+                Objects.equals(continentesDominados, jogador.continentesDominados) &&
+                Objects.equals(op, jogador.op) &&
+                Objects.equals(scanner, jogador.scanner);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cor, t, exercitos, exercitosLivres, dominio, continentesDominados, numpaises, op, scanner);
     }
 }
