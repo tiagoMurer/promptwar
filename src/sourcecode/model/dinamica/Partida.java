@@ -14,7 +14,7 @@ public class Partida {
     private Territorios territorio;
     private Rodada rodada;
     private Vez vez;
-    private boolean winCondition;
+    private static boolean winCondition;
 
     public Partida(int numJogs) throws IOException {
 
@@ -34,8 +34,6 @@ public class Partida {
     public void novaPartida() throws IOException {
         while (winCondition == false) {
             rodada.novaRodada(vez);
-            checkWin();
-
         }
     }
 
@@ -75,16 +73,7 @@ public class Partida {
         }
     }
 
-    public boolean checkWin(){
-        Jogador jogador = Territorios.getPaises().get(0).getOcupante();
-        for(Pais pais: Territorios.getPaises()){
-            if(pais.getOcupante().getCor() != jogador.getCor()){
-                return false;
-            }
-        }
-        winCondition = true;
-        return true;
-    }
+
 
 
     //--------------------------------------getters+setters
@@ -94,5 +83,13 @@ public class Partida {
 
     public void setJogadores(ArrayList<Jogador> jogadores) {
         this.jogadores = jogadores;
+    }
+
+    public static boolean isWinCondition() {
+        return winCondition;
+    }
+
+    public static void setWinCondition(boolean winCondition) {
+        Partida.winCondition = winCondition;
     }
 }

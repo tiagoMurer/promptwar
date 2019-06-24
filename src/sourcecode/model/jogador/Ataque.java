@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class Ataque {
-    
+
     private Pais atacante;
     private Pais defensor;
     private int numexercitos;
@@ -54,7 +54,6 @@ public class Ataque {
             }
 
             comparar(atk, def);
-            System.out.println("NUMEXERCITOS "+ numexercitos);
             retornarExercito();
 
             Outputs.perguntarSimNao("Gostaria de iniciar mais uma batalha?");

@@ -1,6 +1,7 @@
 package sourcecode.model.territorios;
 
 import sourcecode.model.inputs_outputs.LeitorArquivoConf;
+import sourcecode.model.jogador.Jogador;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,5 +69,14 @@ public class Territorios {
             }
         }
         return continente;
+    }
+
+    public static boolean checkVitoria(Jogador jogador){
+        for(Pais pais: getPaises()){
+            if(pais.getOcupante().getCor() != jogador.getCor()){
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -1,6 +1,7 @@
 package sourcecode.model.dinamica;
 
 import sourcecode.model.jogador.Jogador;
+import sourcecode.model.territorios.Territorios;
 
 import java.io.IOException;
 
@@ -15,6 +16,9 @@ public class Vez {
         jogador.alocar();
         jogador.atacar();
         jogador.deslocar();
+
+        boolean x = Territorios.checkVitoria(jogador);
+        Partida.setWinCondition(x);
 
     }
 }

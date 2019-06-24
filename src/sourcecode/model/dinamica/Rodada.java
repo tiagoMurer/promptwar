@@ -23,7 +23,9 @@ public class Rodada {
 
     public void novaRodada(Vez vez) throws IOException {
         for(Jogador jogador: jogadores){
-            vez.novaVez(jogador);
+            if(Partida.isWinCondition() == false) {
+                vez.novaVez(jogador);
+            }
         }
     }
 
