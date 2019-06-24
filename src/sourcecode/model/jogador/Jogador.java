@@ -75,7 +75,7 @@ public class Jogador {
                     op.listarPaises(atacante.getFronteirasInimigas());
                     i = scanner.nextInt();
                     Pais defensor = atacante.getPaisById(i);
-                    if(defensor.equals(atacante) || defensor.getExercitos() == 0){
+                    if(defensor.getOcupante().getCor() == atacante.getOcupante().getCor() || defensor.getExercitos() == 0){
                         System.out.println("Você só pode atacar países inimigos");
                     }else {
                         System.out.println("Determine um número de atacantes ( 1  a " + (atacante.getExercitos() - 1) + ")");
