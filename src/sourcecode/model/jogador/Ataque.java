@@ -9,9 +9,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class Ataque {
-
-    private Jogador jogadorDaVez;
-
+    
     private Pais atacante;
     private Pais defensor;
     private int numexercitos;
