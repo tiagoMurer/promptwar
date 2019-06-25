@@ -17,7 +17,7 @@ public class Outputs {
         for(int i = 0; i <  paises.size(); i++){
             System.out.print("[" + (i+1) + "] "+ paises.get(i).getNome());
             if(paises.get(i).getOcupante().getCor() != null){
-                System.out.print(" ("+ paises.get(i).getOcupante().getCor() + ", "+ paises.get(i).getExercitos() + " exércitos)\n");
+                System.out.print(" ("+ paises.get(i).getOcupante().getCor() + ", "+ paises.get(i).getExercitos() + " exercitos)\n");
             }else{
                 System.out.println("\n");
             }
@@ -33,7 +33,7 @@ public class Outputs {
             }
             int nex = p.getExercitos();
             System.out.print("[" + (i+1) + "] "+ p.getNome());
-            System.out.println(" (" + cor + ", " + nex + " exércitos)");
+            System.out.println(" (" + cor + ", " + nex + " exercitos)");
 
         }
 

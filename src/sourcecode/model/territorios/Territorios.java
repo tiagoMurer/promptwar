@@ -1,7 +1,6 @@
 package sourcecode.model.territorios;
 
 import sourcecode.model.inputs_outputs.LeitorArquivoConf;
-import sourcecode.model.jogador.Jogador;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class Territorios {
         this.paises = paises;
     }
 
-    public static ArrayList<Continente> getContinentes() {
+    public ArrayList<Continente> getContinentes() {
         return continentes;
     }
 
@@ -60,27 +59,6 @@ public class Territorios {
         return paises;
     }
 
-    public static ArrayList<Pais> getPaisesdoContinente(Continente c){
-        int idC = c.getId();
-        ArrayList<Pais> p = new ArrayList();
-        for(Pais pais: paises){
-            if(pais.getContinente() == idC){
-                p.add(pais);
-            }
-        }
-
-        return p;
-    }
-
-    public static boolean checarDominacaoContinente(Jogador j, Continente c){
-        for(Pais p: getPaisesdoContinente(c)){
-            if(p.getOcupante().getCor() != j.getCor()){
-                return false;
-            }
-        }
-        return true;
-    }
-
 
     public Continente getContinenteById(int x){
         Continente continente = null;
@@ -90,14 +68,5 @@ public class Territorios {
             }
         }
         return continente;
-    }
-
-    public static boolean checkVitoria(Jogador jogador){
-        for(Pais pais: getPaises()){
-            if(pais.getOcupante().getCor() != jogador.getCor()){
-                return false;
-            }
-        }
-        return true;
     }
 }

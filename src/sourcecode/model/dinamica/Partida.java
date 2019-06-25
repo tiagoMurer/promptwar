@@ -14,12 +14,12 @@ public class Partida {
     private Territorios territorio;
     private Rodada rodada;
     private Vez vez;
-    private static boolean winCondition;
+    private boolean winCondition;
 
     public Partida(int numJogs) throws IOException {
 
-        this.jogadores = new ArrayList();
-        LeitorArquivoConf lc = new LeitorArquivoConf();
+        this.jogadores = new ArrayList<Jogador>();
+        //LeitorArquivoConf lc = new LeitorArquivoConf();
         this.territorio = new Territorios();
 
         inscreverJogadores(numJogs);
@@ -32,9 +32,7 @@ public class Partida {
 
 
     public void novaPartida() throws IOException {
-        while (winCondition == false) {
-            rodada.novaRodada(vez);
-        }
+            rodada.executarRodadas(vez, territorio);
     }
 
     public void inscreverJogadores(int numJogadores) throws IOException{
@@ -50,11 +48,11 @@ public class Partida {
         double x = Territorios.getPaises().size()/jogadores.size();
         int ppj = (int) Math.floor(x); 		//ppj = paises por jogadores
 
-        ArrayList<Integer> nums = new ArrayList();
+        ArrayList<Integer> nums = new ArrayList<Integer>();
         for(int i = 1; i <= 42; i++){  // nums = {1,2,3...42}
             nums.add(i);
         }
-        Collections.shuffle(nums);		//nums é embaralhada;
+        Collections.shuffle(nums);		//nums embaralhada;
 
         int p = 0; //index para nums
         for(Jogador jogador:jogadores){
@@ -73,9 +71,6 @@ public class Partida {
         }
     }
 
-
-
-
     //--------------------------------------getters+setters
     public ArrayList<Jogador> getJogadores() {
         return jogadores;
@@ -84,12 +79,5 @@ public class Partida {
     public void setJogadores(ArrayList<Jogador> jogadores) {
         this.jogadores = jogadores;
     }
-
-    public static boolean isWinCondition() {
-        return winCondition;
-    }
-
-    public static void setWinCondition(boolean winCondition) {
-        Partida.winCondition = winCondition;
-    }
+  
 }

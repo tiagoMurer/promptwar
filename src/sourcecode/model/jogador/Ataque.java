@@ -8,7 +8,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+import jdk.internal.dynalink.support.AbstractCallSiteDescriptor;
+
 public class Ataque {
+
+    private Jogador jogadorDaVez;
 
     private Pais atacante;
     private Pais defensor;
@@ -31,42 +35,43 @@ public class Ataque {
 
 
     public void batalha() {
-        Outputs.perguntarSimNao("Iniciar uma batalha?");
-
-        int novabatalha = sc.nextInt();
-
         if(defensor.getExercitos() == 0 || defensor.getOcupante().getCor() == atacante.getOcupante().getCor()){
-            novabatalha = 2;
-        }
-
-        while(novabatalha == 1 && defensor.getExercitos() > 0 && numexercitos > 0){
-
+        	//dont attk
+        }else {
+        while(defensor.getExercitos() > 0 && numexercitos > 0){
+        	Scanner scanner = new Scanner(System.in);
+        	System.out.println("Uma batalha ser· iniciada");
             ArrayList<Integer> atk = rolarAtk();
             System.out.print("O ataque rolou: ");
             for(Integer i: atk){
                 System.out.print(i.intValue() + "   ");
             }
-
             ArrayList<Integer> def = rolarDef();
             System.out.print("\nA defesa rolou: ");
             for(Integer i: def){
                 System.out.println(i.intValue() +"   ");
             }
-
             comparar(atk, def);
-            retornarExercito();
-
-            Outputs.perguntarSimNao("Gostaria de iniciar mais uma batalha?");
-            novabatalha = sc.nextInt();
+            if(defensor.getExercitos() == 0) {
+            int i = 0;
+            do {
+            	System.out.println("Quantos exercitos voce ir· mover? (conquistar)");
+            	i = scanner.nextInt();
+            }while(i < 1 && i > atk.size() && (i > atacante.getExercitos() - 1));
+            defensor.setOcupante(atacante.getOcupante());
+            defensor.setExercitos(i);
+           
+            atacante.setExercitos( atacante.getExercitos() - i);
+            atacante.getOcupante().setNumpaises(atacante.getOcupante().getExercitos() + 1);
+            }
         }
-
+        }
     }
+    
 
-    public ArrayList<Integer> rolarDados(int n, Pais pais){
-        ArrayList<Integer> rolagens = new ArrayList();
-
+    public ArrayList<Integer> rolarDados(int n){
+        ArrayList<Integer> rolagens = new ArrayList<Integer>();
         for (int i = 0; i < n; i++) {
-            int v = dado.rolarDado();
             rolagens.add(dado.rolarDado());
         }
         Collections.sort(rolagens);
@@ -78,11 +83,12 @@ public class Ataque {
         int atk;
         if (numexercitos >= 3) {
             atk = 3;
+            numexercitos -= 3;
         } else {
             atk = numexercitos;
         }
 
-        return rolarDados(atk, atacante);
+        return rolarDados(atk);
     }
 
     public ArrayList<Integer> rolarDef(){
@@ -93,29 +99,23 @@ public class Ataque {
             def = defensor.getExercitos();
         }
 
-        return rolarDados(def, defensor);
+        return rolarDados(def);
 
     }
 
     public void comparar(ArrayList<Integer> a, ArrayList<Integer> d){
         int atkValues = a.size();
         int defValues = d.size();
-        int perdadef = 0;
-        int perdaatk = 0;
+        
         for(int i = 0; i < Math.max(atkValues, defValues) - Math.abs(atkValues - defValues); i++){
             if(a.get(i) > d.get(i)){
+                System.out.println("O defensor perdeu um exercito");
                 defensor.setExercitos(defensor.getExercitos() - 1);
-                perdadef++;
             }else{
-                numexercitos--;
-                perdaatk++;
+                System.out.println("O atacante perdeu um exercito");
+                numexercitos -= 1;
             }
         }
-        System.out.println("O defensor perdeu " + perdadef + " ex√©rcitos");
-        System.out.println("O atacante perdeu " + perdaatk + " ex√©rcitos");
     }
 
-    public void retornarExercito(){
-        this.atacante.setExercitos(this.atacante.getExercitos() + this.numexercitos);
-    }
 }

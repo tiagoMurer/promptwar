@@ -16,17 +16,15 @@ public class Jogador {
     private int exercitos;
     private int exercitosLivres;
     private ArrayList<Pais> dominio;
-    private int pontosdominacao;
     private ArrayList<Continente> continentesDominados;
     private int numpaises;
     private Outputs op;
     private Scanner scanner;
 
     public Jogador(String cor, int exercitos) throws IOException{
-        this.pontosdominacao = 0;
         this.cor = cor;
         this.exercitos = exercitos;
-        this.dominio =  new ArrayList();
+        this.dominio =  new ArrayList<Pais>();
         this.numpaises = 0;
         this.exercitosLivres = 0;
         this.scanner = new Scanner(System.in);
@@ -35,26 +33,37 @@ public class Jogador {
     }
 
     public void receber(){
-        int exRec = (int) Math.floor(dominio.size()/2) + this.pontosdominacao;
+        int exRec = (int) Math.floor(dominio.size()/2);
         exercitosLivres += exRec;
-        System.out.println("Você recebeu " + exRec+ " exércitos");
+        System.out.println("Voc� recebeu " + exRec+ " exercitos");
     }
 
     public void alocar(){
-        System.out.println("Escolha a alocação de seus novos exércitos nos países que você possui:");
+    	int num;
+    	Pais pais;
+    	int nExercitos = (int) Math.floor(dominio.size()/2);
+    	System.out.println("Escolha a aloca��o de seus novos exercitos nos paises que voc� possui:");
         op.listarPaises(dominio);
-        for(int i = 0; i < exercitosLivres; i++){
-            System.out.println((i+1) + " de " + exercitosLivres);
-            int num = scanner.nextInt();
-            Pais pais = dominio.get(num-1);
+        while(nExercitos > 0){
+        	num = 0;
+        	while(num < 1 || num > dominio.size()) {
+        		System.out.println( 1 + " de " + dominio.size());
+        		num = scanner.nextInt();
+        	}
+            pais = dominio.get(num-1);
             pais.setExercitos(pais.getExercitos()+1);
-            System.out.println(pais.getNome() + " recebeu 1 exército");
+            System.out.println(pais.getNome() + " recebeu 1 exercito");
+            nExercitos--;
         }
         setExercitosLivres(0);
     }
 
     public void atacar() throws IOException {
         boolean x = true;
+        Pais atacante;
+        Pais defensor;
+        Ataque ataque;
+        int i;
         while(x){
             op.perguntarSimNao("Gostaria de iniciar um ataque?");
             int num = scanner.nextInt();
@@ -66,23 +75,34 @@ public class Jogador {
                 x = false;
                 break;
             }else{
-                System.out.println("Escolha um pais atacante:");
-                op.listarPaises(dominio);
-                int i = scanner.nextInt();
-                Pais atacante = dominio.get(i - 1);
-                if(atacante.getExercitos() < 2){
-                    System.out.println("Você precisa manter um exército de ocupação");
+                do {
+                	System.out.println("Escolha um pais atacante:");
+                	op.listarPaises(dominio);
+                	i = scanner.nextInt();
+                }while(i > dominio.size() || i < 1);
+                	atacante = dominio.get(i - 1);
+                if(atacante.getExercitos() < 1 || !atacante.getOcupante().getCor().equals(cor) || atacante.getFronteiras().size() == 0){
+                    System.out.println("Ataque inv�lido");
                 }else{
-                    System.out.println("Escolha um pais na fronteira do país atacante:");
-                    op.listarPaises(atacante.getFronteirasInimigas());
-                    i = scanner.nextInt();
-                    Pais defensor = atacante.getPaisById(i);
-                    if(defensor.getOcupante().getCor() == atacante.getOcupante().getCor() || defensor.getExercitos() == 0){
-                        System.out.println("Você só pode atacar países inimigos");
+                	defensor = null;
+                	do {
+                		System.out.println("Escolha um pais na fronteira do pais atacante(zero cancela): ");
+                		op.listarPaises(atacante.getFronteirasInimigas());
+                		i = scanner.nextInt();
+                		if(i == 0) {
+                			break;
+                		}else {
+                		defensor = atacante.getPaisById(i);
+                		}
+                	}while(defensor == null);
+                    if(defensor == atacante && i != 0){
+                        System.out.println("Voc� s� pode atacar paises inimigos");
                     }else {
-                        System.out.println("Determine um número de atacantes ( 1  a " + (atacante.getExercitos() - 1) + ")");
-                        i = scanner.nextInt();
-                        Ataque ataque = new Ataque(atacante, defensor, i);
+                        i = atacante.getExercitos();
+                        if(i >= 3) {
+                        	i = 3;
+                        }
+                        ataque = new Ataque(atacante, defensor, i);
                         ataque.batalha();
                     }
                 }
@@ -92,28 +112,39 @@ public class Jogador {
     }
 
     public void deslocar() throws IOException {
-
+    	 int opcao = 0;
+    	 int i = 0;
+    	do {
         op.perguntarSimNao("Gostaria de deslocar suas tropas?");
-        int opcao = scanner.nextInt();
-
-        while(opcao == 1) {
-            System.out.println("Escolha um pais para ter suas tropas deslocadas:");
+        opcao = scanner.nextInt();
+    	}while(opcao != 1 && opcao != 2);
+        
+    	while(opcao == 1) {
+        	do {
+        	System.out.println("Escolha um pais para ter suas tropas deslocadas (origem):");
             op.listarPaises(dominio);
-            int i = scanner.nextInt();
+            i = scanner.nextInt();
+        	}while(i < 1 || i > dominio.size());
 
-            Pais pais = dominio.get(i);
-            if(pais.getFronteirasNaoInimigas().size() > 0) {
-                System.out.println("Escolha um pais para ter suas tropas deslocadas:");
-                op.listarIdPaises(pais.getFronteiras());
-                scanner.nextInt();
+            Pais origem = dominio.get(i-1);
+            if(origem.getFronteirasNaoInimigas().size() > 0) {
+            	i = 0;
+            	do {
+            	System.out.println("Escolha um pais para ter suas tropas deslocadas (destino):");
+                op.listarIdPaises(origem.getFronteiras());
+                i = scanner.nextInt();
+            	}while(i < 1 || i > origem.getFronteiras().size());
+            	Pais destino = t.getPaisById(origem.getFronteiras().get(i-1));
+            	System.out.println(destino.getNome() + destino.getExercitos() + "->" + (destino.getExercitos()+1) + " exercitos");
+            	destino.setExercitos(destino.getExercitos()+1);
             }else{
-                System.out.println("Não há para onde mover exércitos deste país:");
+                System.out.println("N�o ha para onde mover exercitos deste pais:");
             }
 
             op.perguntarSimNao("Gostaria de deslocar mais tropas?");
             opcao = scanner.nextInt();
-        }
-
+        	}
+        
 
     }
 
@@ -159,14 +190,6 @@ public class Jogador {
 
     public void setNumpaises(int numpaises) {
         this.numpaises = numpaises;
-    }
-
-    public int getPontosdominacao() {
-        return pontosdominacao;
-    }
-
-    public void setPontosdominacao(int pontosdominacao) {
-        this.pontosdominacao = pontosdominacao;
     }
 
     @Override

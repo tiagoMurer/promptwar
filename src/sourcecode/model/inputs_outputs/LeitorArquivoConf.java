@@ -28,7 +28,7 @@ public class LeitorArquivoConf {
         this.contPath = contPath;
     }
 
-    //outros mÃ©todos
+    //outros métodos
     public static String fileToString(String caminhoArquivo) throws IOException {
         InputStream is = new FileInputStream(caminhoArquivo);
         buf = new BufferedReader(new InputStreamReader(is));
@@ -64,7 +64,6 @@ public class LeitorArquivoConf {
             continente = new Continente(id, name, pontos);
             continentes.add(continente);
         }
-
         return continentes;
     }
 
@@ -100,7 +99,6 @@ public class LeitorArquivoConf {
             paises.add(pais);
 
         }
-
         return paises;
     }
 }
