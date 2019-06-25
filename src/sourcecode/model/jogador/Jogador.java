@@ -16,12 +16,14 @@ public class Jogador {
     private int exercitos;
     private int exercitosLivres;
     private ArrayList<Pais> dominio;
+    private int pontosdominacao;
     private ArrayList<Continente> continentesDominados;
     private int numpaises;
     private Outputs op;
     private Scanner scanner;
 
     public Jogador(String cor, int exercitos) throws IOException{
+        this.pontosdominacao = 0;
         this.cor = cor;
         this.exercitos = exercitos;
         this.dominio =  new ArrayList();
@@ -33,7 +35,7 @@ public class Jogador {
     }
 
     public void receber(){
-        int exRec = (int) Math.floor(dominio.size()/2);
+        int exRec = (int) Math.floor(dominio.size()/2) + this.pontosdominacao;
         exercitosLivres += exRec;
         System.out.println("Você recebeu " + exRec+ " exércitos");
     }
@@ -157,6 +159,14 @@ public class Jogador {
 
     public void setNumpaises(int numpaises) {
         this.numpaises = numpaises;
+    }
+
+    public int getPontosdominacao() {
+        return pontosdominacao;
+    }
+
+    public void setPontosdominacao(int pontosdominacao) {
+        this.pontosdominacao = pontosdominacao;
     }
 
     @Override

@@ -29,7 +29,7 @@ public class Territorios {
         this.paises = paises;
     }
 
-    public ArrayList<Continente> getContinentes() {
+    public static ArrayList<Continente> getContinentes() {
         return continentes;
     }
 
@@ -58,6 +58,27 @@ public class Territorios {
             paises.add(getPaisById(i));
         }
         return paises;
+    }
+
+    public static ArrayList<Pais> getPaisesdoContinente(Continente c){
+        int idC = c.getId();
+        ArrayList<Pais> p = new ArrayList();
+        for(Pais pais: paises){
+            if(pais.getContinente() == idC){
+                p.add(pais);
+            }
+        }
+
+        return p;
+    }
+
+    public static boolean checarDominacaoContinente(Jogador j, Continente c){
+        for(Pais p: getPaisesdoContinente(c)){
+            if(p.getOcupante().getCor() != j.getCor()){
+                return false;
+            }
+        }
+        return true;
     }
 
 
